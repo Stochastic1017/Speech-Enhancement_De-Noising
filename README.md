@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This report is intended to explore the use of unsupervised isolation- and density-based ensemble models for anomaly detection and cleaning using speech data. Furthermore, the paper also shows neural network classification implemented to quantify model performance improvement before and after cleaning. The dataset for this task contains ≈ 1.98 million audio files distributed among 34 languages. University of Wisconsin’s Center of High-Throughput Computing (CHTC) clusters were utilized to conduct this task in a methodical and computationally efficient manner.
+This report is intended to explore the use of unsupervised isolation-based and density-based ensemble models for anomaly detection and cleaning using speech data. Furthermore, the paper also shows neural network classification implemented to quantify model performance improvement before and after cleaning. The dataset for this task contains $\approx$ 1.98 million audio files distributed among 34 languages. University of Wisconsin’s Center of High-Throughput Computing (CHTC) clusters were utilized to conduct this task in a methodical and computationally efficient manner.
 
 ## About the Dataset
 
