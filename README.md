@@ -49,8 +49,8 @@ For outlier audio with detected speech, a de-noising algorithm was applied using
 
 To analyze the effectiveness of our speech enhancement process, we created two Convolutional Neural Network (CNN) Models trained on both clean or unclean data and compared their performances.
 
-<img src="https://github.com/Stochastic1017/Speech-Enhancement_De-Noising/blob/main/images/auc_recall.png" width="900" height="500">
-<img src="https://github.com/Stochastic1017/Speech-Enhancement_De-Noising/blob/main/images/confusion.png" width="900" height="500">
+<img src="https://github.com/Stochastic1017/Speech-Enhancement_De-Noising/blob/main/images/auc_recall.png" width="1000" height="500">
+<img src="https://github.com/Stochastic1017/Speech-Enhancement_De-Noising/blob/main/images/confusion.png" width="1000" height="500">
 
 ## Conclusion
 
