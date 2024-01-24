@@ -1,4 +1,4 @@
-# Speech Enhancement and De-noising for Classification Tasks.
+# Outlier Detection and De-noising for Neural Network Language Classification
 
 ## Introduction
 
