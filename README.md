@@ -8,13 +8,19 @@ This report is intended to explore the use of unsupervised isolation-based and d
 
 Common Voice by Mozilla is a publicly-available voice dataset from volunteer contributors. The data was downloaded in parallel, with each file containing approximately 60,000 audio clips. For each language, shell scripts were written to randomize, split, chunk, and tar data to prepare them for staging. The end result was 1300 tar files, each of which contained 1500 audio files, totaling up to 65 gigabytes of data. Further details about Common Voice can be found [here](https://commonvoice.mozilla.org/en/about).
 
+<img src="https://github.com/Stochastic1017/Speech-Enhancement_De-Noising/blob/main/images/data_engineering.png" width="900" height="500">
+
 ## Data Engineering
 
 Audio files were loaded, and sound features were extracted using the librosa package in python. The features used throughout the project include root mean squared energy, zero crossing rate, spectral flatness, mel-frequency cepstral coefficients, and chroma short-time fourier transforms. For each of those features, the mean, standard deviation, minimum, maximum, first quartile, third quartile, and skew statistics were chosen. To make the features usable for sklearn and tensorflow, relevant procedures such as standardization, feature stacking, dimension reduction, and dataframe creation were done using numpy and pandas. Furthermore, other packages like os, glob, and shutil were used to conduct OS and command line functionalities.
 
+<img src="https://github.com/Stochastic1017/Speech-Enhancement_De-Noising/blob/main/images/flowchart.png" width="900" height="400">
+
 ## Outlier Detection to Find Anomalies
 
 A combination of two unsupervised outlier detection methods were used for this project. First, Isolation Forests (IF) detected anomalies by utilizing binary trees to recursively generate sub-samples to segment and search for outliers in the data, without employing any distance or density measures. Secondly, a Local Outlier Factor (LOF) was used to compute the local density deviation of a given data point with respect to its neighbors and identify outliers. sklearn’s IF and LOF functions were used for our project, and the intersection of these was used to classify audio as outliers or typical.
+
+<img src="https://github.com/Stochastic1017/Speech-Enhancement_De-Noising/blob/main/images/anomaly_detection.png" width="900" height="500">
 
 ## Speech Detection
 
@@ -26,6 +32,8 @@ For the outlier audio found by the ensemble algorithm described above, we ran a 
 
 If $\xi(\vec{\mu}) = \text{False}$, no speech detected (and the audio is removed), otherwise it’s de-noised.
 
+<img src="https://github.com/Stochastic1017/Speech-Enhancement_De-Noising/blob/main/images/silent.png" width="900" height="500">
+
 ## De-noising using Spectral Gating
 
 For outlier audio with detected speech, a de-noising algorithm was applied using spectral gating via the noisereduce package, for which our high-level understanding includes the following as a few main steps:
@@ -35,9 +43,14 @@ For outlier audio with detected speech, a de-noising algorithm was applied using
    * Use resulting “power” vector and its statistics to calculate a threshold for filtering.
 3. Mask” is smoothed and reapplied, inverted, to the FFT of the signal to produce a “cleaned” result.
 
+<img src="https://github.com/Stochastic1017/Speech-Enhancement_De-Noising/blob/main/images/denoising.png" width="900" height="600">
+
 ## Metrics
 
 To analyze the effectiveness of our speech enhancement process, we created two Convolutional Neural Network (CNN) Models trained on both clean or unclean data and compared their performances.
+
+<img src="https://github.com/Stochastic1017/Speech-Enhancement_De-Noising/blob/main/images/auc_recall.png" width="900" height="500">
+<img src="https://github.com/Stochastic1017/Speech-Enhancement_De-Noising/blob/main/images/confusion.png" width="900" height="500">
 
 ## Conclusion
 
